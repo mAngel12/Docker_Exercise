@@ -6,8 +6,8 @@ public class DockerApp {
 	private static final String insertSQL = "insert into MyTable values (?,?,?)";
 	private static final String selectSQL = "select column1, column2, column3 from MyTable)";
 	private static final String db_url = "jdbc:mysql://10.0.10.3:3306/app_db";
-	private static final String db_user = "mdultz";
-	private static final String db_password = "password";
+	private static final String db_user = "root";
+	private static final String db_password = "root";
 
 	public static void main(String[] args) {
 		if (args.length > 0) {
