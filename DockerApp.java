@@ -22,7 +22,7 @@ public class DockerApp {
 
 				case "insert":
 					try {
-						if (args.length == 4) executeInsertSql(commandParts);
+						if (args.length == 4) executeInsertSql(args);
 					} catch (SQLException ex) {
 						System.out.println(ex.toString());
 					}
