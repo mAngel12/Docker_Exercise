@@ -14,7 +14,13 @@ public class DockerApp {
 	private static final String db_password = "root";
 
 	public static void main(String[] args) {
-		createTableIfNotExist();
+		
+		try {
+			createTableIfNotExist();
+		} catch (SQLException ex) {
+			System.out.println(ex.toString());
+		}
+		
 		if (args.length > 0) {
 			switch(args[0]) {
 				case "list":
