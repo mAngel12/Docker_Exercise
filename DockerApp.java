@@ -3,6 +3,10 @@ import java.sql.*;
 
 public class DockerApp {
 
+	private static final String createTableSQL = "CREATE TABLE IF NOT EXISTS MyTable"
+            			+ " (column1 VARCHAR(30),"
+            			+ "  column2 VARCHAR(30),"
+            			+ "  column3 VARCHAR(30))";
 	private static final String insertSQL = "insert into MyTable values (?,?,?)";
 	private static final String selectSQL = "select column1, column2, column3 from MyTable";
 	private static final String db_url = "jdbc:mysql://10.0.10.3:3306/app_db";
@@ -36,15 +40,10 @@ public class DockerApp {
 		return DriverManager.getConnection(db_url, db_user, db_password);
 	}
 
-	private void createTableIfNotExist() throws SQLException {
+	private static void createTableIfNotExist() throws SQLException {
 		Connection conn = getMySqlConnection();
-    		String sqlCreate = "CREATE TABLE IF NOT EXISTS MyTable"
-            			+ "  (column1 VARCHAR(30),"
-            			+ "   column2 VARCHAR(30),"
-            			+ "   column3 VARCHAR(30))";
-
     		Statement stmt = conn.createStatement();
-    		stmt.execute(sqlCreate);
+    		stmt.execute(createTableSQL);
 	}
 	
 	public static void getAllRecords() throws SQLException {
