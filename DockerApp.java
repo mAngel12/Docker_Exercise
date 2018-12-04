@@ -59,8 +59,8 @@ public class DockerApp {
 		while (rs.next()) {
 			System.out.println(
 				"Column1:" + rs.getString("column1") + 
-				"Column2:" + rs.getString("column2") + 
-				"Column3:" + rs.getString("column3")
+				" Column2:" + rs.getString("column2") + 
+				" Column3:" + rs.getString("column3")
 			);
 		}
 		
