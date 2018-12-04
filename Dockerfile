@@ -5,4 +5,5 @@ COPY ./script.sh /script.sh
 ENV CLASSPATH=/mysql-connector-java-8.0.13.jar:${CLASSPATH}
 WORKDIR /
 RUN ["javac", "DockerApp.java"]
+RUN chmod +x /script.sh
 ENTRYPOINT ["./script.sh"]
