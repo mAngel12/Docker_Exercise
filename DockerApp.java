@@ -4,12 +4,13 @@ import java.sql.*;
 public class DockerApp {
 
 	private static final String insertSQL = "insert into MyTable values (?,?,?)";
-	private static final String selectSQL = "select column1, column2, column3 from MyTable)";
+	private static final String selectSQL = "select column1, column2, column3 from MyTable";
 	private static final String db_url = "jdbc:mysql://10.0.10.3:3306/app_db";
 	private static final String db_user = "root";
 	private static final String db_password = "root";
 
 	public static void main(String[] args) {
+		createTableIfNotExist();
 		if (args.length > 0) {
 			switch(args[0]) {
 				case "list":
@@ -35,6 +36,17 @@ public class DockerApp {
 		return DriverManager.getConnection(db_url, db_user, db_password);
 	}
 
+	private void createTableIfNotExist() throws SQLException {
+		Connection conn = getMySqlConnection();
+    		String sqlCreate = "CREATE TABLE IF NOT EXISTS MyTable"
+            			+ "  (column1 VARCHAR(30),"
+            			+ "   column2 VARCHAR(30),"
+            			+ "   column3 VARCHAR(30))";
+
+    		Statement stmt = conn.createStatement();
+    		stmt.execute(sqlCreate);
+	}
+	
 	public static void getAllRecords() throws SQLException {
 		Connection conn = getMySqlConnection();
 		PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
