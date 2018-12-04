@@ -3,4 +3,7 @@ COPY ./mysql-connector-java-8.0.13.jar  /mysql-connector-java-8.0.13.jar
 COPY ./DockerApp.java /DockerApp.java
 WORKDIR /
 RUN ["javac", "DockerApp.java"]
-CMD ["java", "DockerApp"]
+CMD ["java", "DockerApp", "insert", "123", "456", "789"]
+CMD ["java", "DockerApp", "insert", "abc", "def", "ghi"]
+CMD ["java", "DockerApp", "insert", "text1", "text2", "text3"]
+CMD ["java", "DockerApp", "list"]
