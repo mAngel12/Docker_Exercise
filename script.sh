@@ -1,3 +1,4 @@
+#!/bin/bash
 sleep 5s
 javac DockerApp.java
 java DockerApp insert 123 456 789
