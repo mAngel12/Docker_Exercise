@@ -10,25 +10,24 @@ public class DockerApp {
 	private static final String db_password = "password";
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		String command = in.nextLine();
-		String[] commandParts = command.split(" ");
-		switch(commandParts[0]) {
-			case "list":
-				try {
-					getAllRecords();
-				} catch (SQLException ex) {
-					System.out.println(ex.toString());
-				}
-			break;
+		if (args.length > 0) {
+			switch(args[0]) {
+				case "list":
+					try {
+						getAllRecords();
+					} catch (SQLException ex) {
+						System.out.println(ex.toString());
+					}
+				break;
 
-			case "insert":
-				try {
-					executeInsertSql(commandParts);
-				} catch (SQLException ex) {
-					System.out.println(ex.toString());
-				}
-			break;
+				case "insert":
+					try {
+						if (args.length == 4) executeInsertSql(commandParts);
+					} catch (SQLException ex) {
+						System.out.println(ex.toString());
+					}
+				break;
+			}
 		}
 	}
 	
